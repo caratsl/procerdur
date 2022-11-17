@@ -27,6 +27,11 @@ class Vehicle:
     def get_id(self):
         return self.id
 
+
+    def get_key(self):
+        return self.key
+
+
     def set_char(self, key, power, tmp_char, idd, con):
         self.key = key
         self.power = power
@@ -41,17 +46,18 @@ class Vehicle:
 f = open('in.txt')
 
 
-
 def in_Car(new_veh):
     text = f.readline()
     a = text.split(' ')
     key = 'CAR'
     power = int(a[0])
     tmp = int(a[1])
+    con = int(a[2])
     idd = gen_id(objects)
-    new_veh.set_char( key, power, tmp, idd)
+    new_veh.set_char( key, power, tmp, idd, con)
 
     return new_veh
+
 
 def new_func(veh):
     if veh.key == 'BUS':
@@ -61,7 +67,12 @@ def new_func(veh):
     elif veh.key == 'CAR':
         return 5*75 / veh.power
 
-
+def sort_objects():
+    N = len(objects)
+    for i in range(N - 1):
+        for j in range(N - i - 1):
+            if objects[j].get_key() > objects[j+1].get_key():
+                objects[j], objects[j+1] = objects[j+1], objects[j]
 
 
 def in_Bus(new_veh):
@@ -92,7 +103,12 @@ def in_Truck(new_veh):
 
 def out_Car(out_veh):
     a = out_veh.get_char()
-    print(f'{a[0]}: It is CAR, Power = {a[1]}, Max speed = {a[2]}')
+    print(f'{a[0]}: It is CAR, Power = {a[1]}, Max speed = {a[2]}, consumption = {a[3]}')
+
+
+def car_info(out_veh):
+    a = out_veh.get_char()
+    return f'{a[0]}: It is CAR, Power = {a[1]}, Max speed = {a[2]}, consumption = {a[3]}'
 
 
 def out_Bus(out_veh):
@@ -100,9 +116,19 @@ def out_Bus(out_veh):
     print(f'{a[0]}: It is BUS, Power = {a[1]}, capacity = {a[2]}, consumption = {a[3]}')
 
 
+def bus_info(out_veh):
+    a = out_veh.get_char()
+    return f'{a[0]}: It is BUS, Power = {a[1]}, capacity = {a[2]}, consumption = {a[3]}'
+
+
 def out_Truck(out_veh):
     a = out_veh.get_char()
     print(f'{a[0]}: It is TRUCK, Power = {a[1]}, maxWeight = {a[2]}, consumption = {a[3]}')
+
+
+def truck_info(out_veh):
+    a = out_veh.get_char()
+    return f'{a[0]}: It is TRUCK, Power = {a[1]}, maxWeight = {a[2]}, consumption = {a[3]}'
 
 
 def clear_container():
