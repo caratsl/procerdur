@@ -1,7 +1,6 @@
 from vehicles import *
 
 
-
 file_in()
 if len(objects) == 0:
     print("Container is empty")
