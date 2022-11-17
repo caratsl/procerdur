@@ -26,6 +26,9 @@ class Vehicle:
     def get_id(self):
         return self.id
 
+    def get_key(self):
+        return self.key
+
     def set_char(self, key, power, tmp_char, idd):
         self.key = key
         self.power = power
@@ -38,6 +41,13 @@ class Vehicle:
 
 f = open('in.txt')
 
+
+def sort_objects():
+    N = len(objects)
+    for i in range(N - 1):
+        for j in range(N - i - 1):
+            if objects[j].get_key() > objects[j+1].get_key():
+                objects[j], objects[j+1] = objects[j+1], objects[j]
 
 def in_Bus(new_veh):
     text = f.readline()
