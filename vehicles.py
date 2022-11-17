@@ -39,6 +39,13 @@ class Vehicle:
 f = open('in.txt')
 
 
+def new_func(veh):
+    if veh.key == 'BUS':
+        return 75 * veh.tmp_char / veh.power
+    elif veh.key == 'TRUCK':
+        return veh.tmp_char / veh.power
+
+
 def in_Bus(new_veh):
     text = f.readline()
     a = text.split(' ')
