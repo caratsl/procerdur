@@ -39,6 +39,18 @@ class Vehicle:
 f = open('in.txt')
 
 
+def in_Car(new_veh):
+    text = f.readline()
+    a = text.split(' ')
+    key = 'CAR'
+    power = int(a[0])
+    tmp = int(a[1])
+    idd = gen_id(objects)
+    new_veh.set_char( key, power, tmp, idd)
+
+    return new_veh
+
+
 def in_Bus(new_veh):
     text = f.readline()
     a = text.split(' ')
@@ -63,6 +75,11 @@ def in_Truck(new_veh):
     return new_veh
 
 
+def out_Car(out_veh):
+    a = out_veh.get_char()
+    print(f'{a[0]}: It is CAR, Power = {a[1]}, Max speed = {a[2]}')
+
+
 def out_Bus(out_veh):
     a = out_veh.get_char()
     print(f'{a[0]}: It is BUS, Power = {a[1]}, capacity = {a[2]}')
@@ -75,6 +92,7 @@ def out_Truck(out_veh):
 
 def clear_container():
     objects.clear()
+
 
 def file_in():
     check = True
@@ -92,4 +110,8 @@ def file_in():
             elif type == 2:
                 veh1 = Vehicle()
                 veh1 = in_Truck(veh1)
+                objects.append(veh1)
+            elif type == 3:
+                veh1 = Vehicle()
+                veh1 = in_Car(veh1)
                 objects.append(veh1)

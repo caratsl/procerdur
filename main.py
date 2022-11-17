@@ -13,6 +13,8 @@ else:
             out_Bus(i)
         elif i.key == 'TRUCK':
             out_Truck(i)
+        elif i.key == 'CAR':
+            out_Car(i)
     clear_container()
     print("Container is empty")
     print(f"Contains {len(objects)} element(s)")
