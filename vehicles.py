@@ -1,6 +1,5 @@
 objects = []
 
-
 def gen_id(arr):
     ids = 0
     check = True
@@ -50,11 +49,15 @@ def in_Car(new_veh):
     text = f.readline()
     a = text.split(' ')
     key = 'CAR'
-    power = int(a[0])
-    tmp = int(a[1])
-    con = int(a[2])
-    idd = gen_id(objects)
-    new_veh.set_char( key, power, tmp, idd, con)
+    try:
+        power = int(a[0])
+        tmp = int(a[1])
+        con = int(a[2])
+        idd = gen_id(objects)
+        new_veh.set_char(key, power, tmp, idd, con)
+    except:
+        print('incorrect input values')
+        new_veh = 0
 
     return new_veh
 
@@ -79,11 +82,15 @@ def in_Bus(new_veh):
     text = f.readline()
     a = text.split(' ')
     key = 'BUS'
-    power = int(a[0])
-    tmp = int(a[1])
-    con = int(a[2])
-    idd = gen_id(objects)
-    new_veh.set_char( key, power, tmp, idd, con)
+    try:
+        power = int(a[0])
+        tmp = int(a[1])
+        con = int(a[2])
+        idd = gen_id(objects)
+        new_veh.set_char( key, power, tmp, idd, con)
+    except:
+        print('incorrect input values')
+        new_veh = 0
 
     return new_veh
 
@@ -92,11 +99,15 @@ def in_Truck(new_veh):
     text = f.readline()
     a = text.split(' ')
     key = 'TRUCK'
-    power = int(a[0])
-    tmp = int(a[1])
-    con = int(a[2])
-    idd = gen_id(objects)
-    new_veh.set_char( key, power, tmp, idd, con)
+    try:
+        power = int(a[0])
+        tmp = int(a[1])
+        con = int(a[2])
+        idd = gen_id(objects)
+        new_veh.set_char(key, power, tmp, idd, con)
+    except:
+        print('incorrect input values')
+        new_veh = 0
 
     return new_veh
 
@@ -147,12 +158,24 @@ def file_in():
             if type == 1:  # это BUS
                 veh = Vehicle()
                 veh = in_Bus(veh)
-                objects.append(veh)
+                if veh == 0:
+                    objects.clear()
+                    break
+                else:
+                    objects.append(veh)
             elif type == 2:
-                veh1 = Vehicle()
-                veh1 = in_Truck(veh1)
-                objects.append(veh1)
+                veh = Vehicle()
+                veh = in_Truck(veh)
+                if veh == 0:
+                    objects.clear()
+                    break
+                else:
+                    objects.append(veh)
             elif type == 3:
-                veh1 = Vehicle()
-                veh1 = in_Car(veh1)
-                objects.append(veh1)
+                veh = Vehicle()
+                veh = in_Car(veh)
+                if veh == 0:
+                    objects.clear()
+                    break
+                else:
+                    objects.append(veh)
