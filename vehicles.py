@@ -77,10 +77,19 @@ def out_Bus(out_veh):
     a = out_veh.get_char()
     print(f'{a[0]}: It is BUS, Power = {a[1]}, capacity = {a[2]}')
 
+def bus_info(out_veh):
+    a = out_veh.get_char()
+    return f'{a[0]}: It is BUS, Power = {a[1]}, capacity = {a[2]}'
+
+
 
 def out_Truck(out_veh):
     a = out_veh.get_char()
     print(f'{a[0]}: It is TRUCK, Power = {a[1]}, maxWeight = {a[2]}')
+
+def truck_info(out_veh):
+    a = out_veh.get_char()
+    return f'{a[0]}: It is TRUCK, Power = {a[1]}, maxWeight = {a[2]}'
 
 
 def clear_container():

@@ -14,6 +14,10 @@ else:
             out_Bus(i)
         elif i.key == 'TRUCK':
             out_Truck(i)
+    f2 = open('out.txt', 'w')
+    for i in objects:
+        if i.get_key() == 'BUS':
+            f2.write(bus_info(i) + '\n')
 
     clear_container()
     print("Container is empty")
